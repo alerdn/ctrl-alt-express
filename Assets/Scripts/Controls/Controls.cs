@@ -37,15 +37,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Aim"",
-                    ""type"": ""Value"",
-                    ""id"": ""4ec22f04-7acd-4559-a6cb-c4fe14f1358b"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""ChangeToKunoichi"",
                     ""type"": ""Button"",
                     ""id"": ""69955261-86d5-4882-a90d-18c338b0446c"",
@@ -133,28 +124,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1f2e9248-d861-45c9-adfc-d0e1ea2ef228"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ac5fab1d-2588-4b86-8612-bf2f635ec68e"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""2ab9a852-2fa9-4430-b0f8-747ebc313248"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -233,7 +202,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_ChangeToKunoichi = m_Player.FindAction("ChangeToKunoichi", throwIfNotFound: true);
         m_Player_ChengeToNinja = m_Player.FindAction("ChengeToNinja", throwIfNotFound: true);
     }
@@ -298,7 +266,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_ChangeToKunoichi;
     private readonly InputAction m_Player_ChengeToNinja;
     public struct PlayerActions
@@ -306,7 +273,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @ChangeToKunoichi => m_Wrapper.m_Player_ChangeToKunoichi;
         public InputAction @ChengeToNinja => m_Wrapper.m_Player_ChengeToNinja;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -321,9 +287,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Aim.started += instance.OnAim;
-            @Aim.performed += instance.OnAim;
-            @Aim.canceled += instance.OnAim;
             @ChangeToKunoichi.started += instance.OnChangeToKunoichi;
             @ChangeToKunoichi.performed += instance.OnChangeToKunoichi;
             @ChangeToKunoichi.canceled += instance.OnChangeToKunoichi;
@@ -337,9 +300,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Aim.started -= instance.OnAim;
-            @Aim.performed -= instance.OnAim;
-            @Aim.canceled -= instance.OnAim;
             @ChangeToKunoichi.started -= instance.OnChangeToKunoichi;
             @ChangeToKunoichi.performed -= instance.OnChangeToKunoichi;
             @ChangeToKunoichi.canceled -= instance.OnChangeToKunoichi;
@@ -384,7 +344,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnAim(InputAction.CallbackContext context);
         void OnChangeToKunoichi(InputAction.CallbackContext context);
         void OnChengeToNinja(InputAction.CallbackContext context);
     }

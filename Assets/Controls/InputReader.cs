@@ -33,11 +33,6 @@ public class InputReader : ScriptableObject, IPlayerActions
         MovementValue = context.ReadValue<Vector2>();
     }
 
-    public void OnAim(InputAction.CallbackContext context)
-    {
-        AimValue = context.ReadValue<Vector2>();
-    }
-
     public void OnChangeToKunoichi(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
