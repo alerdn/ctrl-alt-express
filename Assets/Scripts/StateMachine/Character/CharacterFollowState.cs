@@ -18,6 +18,7 @@ public class CharacterFollowState : CharacterBaseState
         _otherCharacter = stateMachine.OtherCharacter.transform;
 
         _agent.enabled = true;
+        stateMachine.Character.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, 0.1f);
     }
 
     public override void Tick(float deltaTime)
@@ -30,7 +31,7 @@ public class CharacterFollowState : CharacterBaseState
         Vector3 newDestination = _otherCharacter.position;
         float distance = Vector3.Distance(_agent.transform.position, _otherCharacter.position);
 
-        if (newDestination != _agent.destination && distance > 4f)
+        if (_agent.enabled && newDestination != _agent.destination && distance > 4f)
         {
             _agent.destination = _otherCharacter.position;
         }

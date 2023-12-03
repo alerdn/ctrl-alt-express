@@ -11,6 +11,7 @@ public class CharacterFreeLookState : CharacterBaseState
     public override void Enter()
     {
         stateMachine.InputReader.OnActionEvent += UseBondCharge;
+        stateMachine.Character.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, 0.1f);
     }
 
     public override void Tick(float deltaTime)
@@ -62,6 +63,15 @@ public class CharacterFreeLookState : CharacterBaseState
             return;
         }
 
-        stateMachine.BondStateMachine.BondCharge.Value--;
+        Collider[] colliders = Physics.OverlapSphere(stateMachine.transform.position, stateMachine.InteractionRange);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                interactable.Interact(stateMachine);
+                stateMachine.BondStateMachine.BondCharge.Value--;
+                break;
+            }
+        }
     }
 }

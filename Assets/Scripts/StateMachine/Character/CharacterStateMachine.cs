@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CharacterStateMachine : StateMachine
 {
+    public event Action OnSwitchCharecter;
+
     public InputReader InputReader { get; private set; }
     public BondStateMachine BondStateMachine { get; private set; }
     public CharacterStateMachine OtherCharacter { get; private set; }
+    public float ChannelingTime = 5f;
 
     [field: SerializeField] public Character Character { get; private set; }
     [field: SerializeField] public float FreeLookMovement { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
+    [field: SerializeField] public float InteractionRange { get; private set; } = 2f;
 
     public bool IsCurrent { get; set; }
     public Camera MainCamera { get; private set; }
@@ -28,5 +32,10 @@ public class CharacterStateMachine : StateMachine
         OtherCharacter = otherCharacter;
 
         SwitchState(new CharacterFreeLookState(this));
+    }
+
+    public void SwitchCharacter()
+    {
+        OnSwitchCharecter?.Invoke();
     }
 }
