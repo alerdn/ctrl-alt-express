@@ -10,6 +10,7 @@ public class CharacterFreeLookState : CharacterBaseState
 
     public override void Enter()
     {
+        stateMachine.InputReader.OnActionEvent += UseBondCharge;
     }
 
     public override void Tick(float deltaTime)
@@ -36,6 +37,7 @@ public class CharacterFreeLookState : CharacterBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.OnActionEvent -= UseBondCharge;
     }
 
     private Vector3 CalculeMovement()
@@ -51,5 +53,15 @@ public class CharacterFreeLookState : CharacterBaseState
 
         return forward * stateMachine.InputReader.MovementValue.y
             + right * stateMachine.InputReader.MovementValue.x;
+    }
+
+    private void UseBondCharge()
+    {
+        if (stateMachine.BondStateMachine.BondCharge.Value <= 0)
+        {
+            return;
+        }
+
+        stateMachine.BondStateMachine.BondCharge.Value--;
     }
 }

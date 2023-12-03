@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action OnChangeToKunoichiEvent;
     public event Action OnChangeToNinjaEvent;
+    public event Action OnActionEvent;
 
     public Vector2 MovementValue { get; private set; }
     public Vector2 AimValue { get; private set; }
@@ -45,5 +46,12 @@ public class InputReader : ScriptableObject, IPlayerActions
         if (!context.performed) return;
 
         OnChangeToNinjaEvent?.Invoke();
+    }
+
+    public void OnActionn(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        OnActionEvent?.Invoke();
     }
 }

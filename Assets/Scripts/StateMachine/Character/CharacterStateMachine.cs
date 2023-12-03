@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterStateMachine : StateMachine
 {
-    [field: SerializeField] public InputReader InputReader { get; private set; }
+    public InputReader InputReader { get; private set; }
+    public BondStateMachine BondStateMachine { get; private set; }
+
     [field: SerializeField] public Character Character { get; private set; }
     [field: SerializeField] public float FreeLookMovement { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
@@ -15,6 +17,13 @@ public class CharacterStateMachine : StateMachine
     private void Start()
     {
         MainCamera = Camera.main;
+    }
+
+    public void Init(InputReader inputReader, BondStateMachine bondStateMachine)
+    {
+        InputReader = inputReader;
+        BondStateMachine = bondStateMachine;
+
         SwitchState(new CharacterFreeLookState(this));
     }
 }

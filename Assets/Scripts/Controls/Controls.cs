@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Actionn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b097815c-0ff6-42e1-8a8f-bbfaf903cbf9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""ChengeToNinja"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e072a716-056e-4cea-bc41-820655e9e56e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Actionn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69f16b59-f3e0-40c8-a0a2-959666b259c4"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Actionn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +235,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_ChangeToKunoichi = m_Player.FindAction("ChangeToKunoichi", throwIfNotFound: true);
         m_Player_ChengeToNinja = m_Player.FindAction("ChengeToNinja", throwIfNotFound: true);
+        m_Player_Actionn = m_Player.FindAction("Actionn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +300,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_ChangeToKunoichi;
     private readonly InputAction m_Player_ChengeToNinja;
+    private readonly InputAction m_Player_Actionn;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -275,6 +308,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @ChangeToKunoichi => m_Wrapper.m_Player_ChangeToKunoichi;
         public InputAction @ChengeToNinja => m_Wrapper.m_Player_ChengeToNinja;
+        public InputAction @Actionn => m_Wrapper.m_Player_Actionn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +327,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ChengeToNinja.started += instance.OnChengeToNinja;
             @ChengeToNinja.performed += instance.OnChengeToNinja;
             @ChengeToNinja.canceled += instance.OnChengeToNinja;
+            @Actionn.started += instance.OnActionn;
+            @Actionn.performed += instance.OnActionn;
+            @Actionn.canceled += instance.OnActionn;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -306,6 +343,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ChengeToNinja.started -= instance.OnChengeToNinja;
             @ChengeToNinja.performed -= instance.OnChengeToNinja;
             @ChengeToNinja.canceled -= instance.OnChengeToNinja;
+            @Actionn.started -= instance.OnActionn;
+            @Actionn.performed -= instance.OnActionn;
+            @Actionn.canceled -= instance.OnActionn;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -346,5 +386,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnChangeToKunoichi(InputAction.CallbackContext context);
         void OnChengeToNinja(InputAction.CallbackContext context);
+        void OnActionn(InputAction.CallbackContext context);
     }
 }

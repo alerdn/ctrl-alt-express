@@ -11,7 +11,7 @@ public abstract class StateMachine : MonoBehaviour
         _currentState?.Enter();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         _currentState?.Tick(Time.deltaTime);
     }
