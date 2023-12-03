@@ -8,29 +8,33 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterStateMachine[] CharacterStateMachines { get; private set; }
     [field: SerializeField] public BondStateMachine BondStateMachine { get; private set; }
 
+    private int _currentCharacterIndex;
+
     private void Start()
     {
-        InputReader.OnChangeToKunoichiEvent += ChangeToKunoichi;
-        InputReader.OnChangeToNinjaEvent += ChangeToNinja;
+        InputReader.OnSwitchCharacterEvent += SwitchCharacter;
+        SetCharacter(0);
 
-        ChangeToKunoichi();
-        foreach (CharacterStateMachine characterStateMachine in CharacterStateMachines)
+        for (int i = 0; i < CharacterStateMachines.Length; i++)
         {
-            characterStateMachine.Init(InputReader, BondStateMachine);
+            CharacterStateMachines[i].Init(InputReader, BondStateMachine, CharacterStateMachines[(i + 1) % 2]);
         }
 
         BondStateMachine.Init(new Character[] { CharacterStateMachines[0].Character, CharacterStateMachines[1].Character });
     }
 
-    private void ChangeToKunoichi()
+    private void SetCharacter(int characterIndex)
     {
-        CharacterStateMachines[0].IsCurrent = true;
-        CharacterStateMachines[1].IsCurrent = false;
+        _currentCharacterIndex = characterIndex;
+        CharacterStateMachines[_currentCharacterIndex].IsCurrent = true;
+        CharacterStateMachines[(_currentCharacterIndex + 1) % 2].IsCurrent = false;
     }
 
-    private void ChangeToNinja()
+    private void SwitchCharacter()
     {
-        CharacterStateMachines[0].IsCurrent = false;
-        CharacterStateMachines[1].IsCurrent = true;
+        _currentCharacterIndex = (_currentCharacterIndex + 1) % 2;
+
+        CharacterStateMachines[_currentCharacterIndex].IsCurrent = true;
+        CharacterStateMachines[(_currentCharacterIndex + 1) % 2].IsCurrent = false;
     }
 }

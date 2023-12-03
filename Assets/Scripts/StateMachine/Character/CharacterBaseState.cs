@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class CharacterBaseState : State
 {
     protected readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    protected const float AnimatorDampTime = .1f;
+    protected const float AnimatorDampTime = .075f;
 
     protected CharacterStateMachine stateMachine;
 

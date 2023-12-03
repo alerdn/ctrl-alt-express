@@ -8,8 +8,7 @@ using static Controls;
 [CreateAssetMenu(fileName = "InputReader", menuName = "Controls/InputReader")]
 public class InputReader : ScriptableObject, IPlayerActions
 {
-    public event Action OnChangeToKunoichiEvent;
-    public event Action OnChangeToNinjaEvent;
+    public event Action OnSwitchCharacterEvent;
     public event Action OnActionEvent;
 
     public Vector2 MovementValue { get; private set; }
@@ -34,18 +33,11 @@ public class InputReader : ScriptableObject, IPlayerActions
         MovementValue = context.ReadValue<Vector2>();
     }
 
-    public void OnChangeToKunoichi(InputAction.CallbackContext context)
+    public void OnSwitchCharacter(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
-        OnChangeToKunoichiEvent?.Invoke();
-    }
-
-    public void OnChengeToNinja(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-
-        OnChangeToNinjaEvent?.Invoke();
+        OnSwitchCharacterEvent?.Invoke();
     }
 
     public void OnActionn(InputAction.CallbackContext context)
