@@ -37,7 +37,9 @@ public class CharacterAttackingState : CharacterBaseState
         }
         else
         {
-            stateMachine.SwitchState(new CharacterFreeLookState(stateMachine));
+            if (stateMachine.IsCurrent)
+                stateMachine.SwitchState(new CharacterFreeLookState(stateMachine));
+            else stateMachine.SwitchState(new CharacterFollowState(stateMachine));
         }
 
         _previousFrameTime = normalizedTime;

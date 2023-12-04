@@ -61,7 +61,7 @@ MonoBehaviour:
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.8
     <ForceTime>k__BackingField: 0.3
-    <Force>k__BackingField: 2
+    <Force>k__BackingField: 5
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2

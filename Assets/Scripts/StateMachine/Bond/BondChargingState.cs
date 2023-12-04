@@ -36,17 +36,17 @@ public class BondChargingState : BondBaseState
 
     private IEnumerator ChargeBond()
     {
-        if (stateMachine.BondCharge.Value < stateMachine.MaxBondCharge)
+        if (stateMachine.Bond.Value < 100)
         {
-            if (stateMachine.Bond.Value < 100)
+            stateMachine.Bond.Value++;
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+        {
+            if (stateMachine.BondCharge.Value < stateMachine.MaxBondCharge)
             {
-                stateMachine.Bond.Value++;
-                yield return new WaitForSeconds(.1f);
-            }
-            else
-            {
-                stateMachine.Bond.Value = 0;
                 stateMachine.BondCharge.Value++;
+                stateMachine.Bond.Value = 0;
             }
         }
 
