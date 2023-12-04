@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class CharacterBaseState : State
 {
     protected readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    protected readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
     protected const float AnimatorDampTime = .075f;
 
     protected CharacterStateMachine stateMachine;

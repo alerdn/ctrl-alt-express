@@ -18,7 +18,7 @@ public class CharacterFollowState : CharacterBaseState
         _otherCharacter = stateMachine.OtherCharacter.transform;
 
         _agent.enabled = true;
-        stateMachine.Character.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, 0.1f);
+        stateMachine.Character.Animator.CrossFadeInFixedTime(stateMachine.Character.FreeLookBlendTreeHash, 0.1f);
     }
 
     public override void Tick(float deltaTime)
