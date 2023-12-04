@@ -13,6 +13,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public Vector2 MovementValue { get; private set; }
     public Vector2 AimValue { get; private set; }
+    public bool IsAttacking { get; private set; }
 
     private Controls _controls;
 
@@ -40,10 +41,22 @@ public class InputReader : ScriptableObject, IPlayerActions
         OnSwitchCharacterEvent?.Invoke();
     }
 
-    public void OnActionn(InputAction.CallbackContext context)
+    public void OnAction(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
 
         OnActionEvent?.Invoke();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            IsAttacking = true;
+        }
+        else if (context.canceled)
+        {
+            IsAttacking = false;
+        }
     }
 }

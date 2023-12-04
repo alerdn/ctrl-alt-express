@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Actionn",
+                    "name": "Action",
                     "type": "Button",
                     "id": "b097815c-0ff6-42e1-8a8f-bbfaf903cbf9",
                     "expectedControlType": "Button",
@@ -27,6 +27,15 @@
                     "name": "SwitchCharacter",
                     "type": "Button",
                     "id": "0069d438-bed3-4c6a-9715-95923fd70b4d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "f4cb3b09-6db6-4add-a4d6-7a151e296dfd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -107,18 +116,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "Actionn",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "69f16b59-f3e0-40c8-a0a2-959666b259c4",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Actionn",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -141,6 +150,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchCharacter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04b5fb89-f0b1-4f14-bfb1-17a8669cec04",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "587d054d-756c-4043-809b-b6e31e2e712b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

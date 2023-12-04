@@ -21,10 +21,14 @@ public class CharacterFreeLookState : CharacterBaseState
             stateMachine.SwitchState(new CharacterFollowState(stateMachine));
             return;
         }
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new CharacterAttackingState(stateMachine, 0));
+            return;
+        }
 
         Vector3 movement = CalculeMovement();
-
-        stateMachine.Character.Controller.Move(stateMachine.FreeLookMovement * deltaTime * movement);
+        Move(stateMachine.FreeLookMovement * movement, deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
@@ -39,21 +43,6 @@ public class CharacterFreeLookState : CharacterBaseState
     public override void Exit()
     {
         stateMachine.InputReader.OnActionEvent -= UseBondCharge;
-    }
-
-    private Vector3 CalculeMovement()
-    {
-        Vector3 forward = stateMachine.MainCamera.transform.forward;
-        Vector3 right = stateMachine.MainCamera.transform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * stateMachine.InputReader.MovementValue.y
-            + right * stateMachine.InputReader.MovementValue.x;
     }
 
     private void UseBondCharge()
