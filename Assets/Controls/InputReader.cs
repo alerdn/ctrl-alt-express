@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action OnSwitchCharacterEvent;
     public event Action OnActionEvent;
+    public event Action OnSpecialAttackEvent;
 
     public Vector2 MovementValue { get; private set; }
     public Vector2 AimValue { get; private set; }
@@ -58,5 +59,12 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             IsAttacking = false;
         }
+    }
+
+    public void OnSpecialAttack(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        OnSpecialAttackEvent?.Invoke();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class CharacterFreeLookState : CharacterBaseState
     public override void Enter()
     {
         stateMachine.InputReader.OnActionEvent += UseBondCharge;
+        stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
         stateMachine.Character.Animator.CrossFadeInFixedTime(stateMachine.Character.FreeLookBlendTreeHash, 0.1f);
     }
 
@@ -43,6 +45,7 @@ public class CharacterFreeLookState : CharacterBaseState
     public override void Exit()
     {
         stateMachine.InputReader.OnActionEvent -= UseBondCharge;
+        stateMachine.InputReader.OnSpecialAttackEvent -= UseAbility;
     }
 
     private void UseBondCharge()
@@ -62,5 +65,17 @@ public class CharacterFreeLookState : CharacterBaseState
                 break;
             }
         }
+    }
+
+    private void UseAbility()
+    {
+        if (stateMachine.BondStateMachine.BondCharge.Value <= 0)
+        {
+            return;
+        }
+
+        stateMachine.BondStateMachine.BondCharge.Value--;
+        stateMachine.SwitchState(new CharacterSpecialAttackingState(stateMachine, 0));
+        return;
     }
 }

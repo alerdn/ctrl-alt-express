@@ -21,7 +21,7 @@ public class CharacterAttackingState : CharacterBaseState
     {
         Move(deltaTime);
 
-        float normalizedTime = GetNormalizedTime();
+        float normalizedTime = stateMachine.GetNormalizedTime("Attack");
 
         if (normalizedTime >= _attack.ForceTime)
         {
@@ -56,7 +56,6 @@ public class CharacterAttackingState : CharacterBaseState
         if (normalizedTime < _attack.ComboAttackTime) return;
 
         stateMachine.SwitchState(new CharacterAttackingState(stateMachine, _attack.ComboStateIndex));
-
     }
 
     private void TryApplyForce()
@@ -69,24 +68,5 @@ public class CharacterAttackingState : CharacterBaseState
 
         stateMachine.ForceReceiver.AddForce((stateMachine.transform.forward + movement) * _attack.Force);
         _alreadyAppliedForce = true;
-    }
-
-    private float GetNormalizedTime()
-    {
-        AnimatorStateInfo currentInfo = stateMachine.Character.Animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.Character.Animator.GetNextAnimatorStateInfo(0);
-
-        if (stateMachine.Character.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
-        {
-            return nextInfo.normalizedTime;
-        }
-        else if (!stateMachine.Character.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
-        }
     }
 }
