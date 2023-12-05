@@ -66,16 +66,4 @@ public class CharacterFreeLookState : CharacterBaseState
             }
         }
     }
-
-    private void UseAbility()
-    {
-        if (stateMachine.BondStateMachine.BondCharge.Value <= 0)
-        {
-            return;
-        }
-
-        stateMachine.BondStateMachine.BondCharge.Value--;
-        stateMachine.SwitchState(new CharacterSpecialAttackingState(stateMachine, 0));
-        return;
-    }
 }

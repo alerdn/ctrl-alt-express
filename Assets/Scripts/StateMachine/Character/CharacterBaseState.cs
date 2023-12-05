@@ -46,4 +46,15 @@ public abstract class CharacterBaseState : State
         return forward * stateMachine.InputReader.MovementValue.y
             + right * stateMachine.InputReader.MovementValue.x;
     }
+
+    protected void UseAbility()
+    {
+        if (stateMachine.BondStateMachine.BondCharge.Value <= 0)
+        {
+            return;
+        }
+
+        stateMachine.BondStateMachine.BondCharge.Value--;
+        stateMachine.SwitchState(new CharacterSpecialAttackingState(stateMachine, 0));
+    }
 }

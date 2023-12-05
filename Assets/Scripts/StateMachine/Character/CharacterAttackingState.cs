@@ -14,6 +14,7 @@ public class CharacterAttackingState : CharacterBaseState
 
     public override void Enter()
     {
+        stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
         stateMachine.Character.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
     }
 
@@ -47,6 +48,7 @@ public class CharacterAttackingState : CharacterBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.OnSpecialAttackEvent -= UseAbility;
     }
 
     private void TryComboAttack(float normalizedTime)
