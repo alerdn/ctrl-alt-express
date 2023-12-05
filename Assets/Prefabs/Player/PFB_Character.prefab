@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 9178085192145848638}
   - component: {fileID: 5284596405468941695}
   - component: {fileID: 2222922777423384112}
-  - component: {fileID: 1523805747257392733}
   m_Layer: 0
   m_Name: PFB_Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +55,7 @@ MonoBehaviour:
   <RotationDamping>k__BackingField: 10
   <ForceReceiver>k__BackingField: {fileID: 2222922777423384112}
   <InteractionRange>k__BackingField: 2
+  <Weapons>k__BackingField: []
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1Punch2
     <TransitionDuration>k__BackingField: 0.05
@@ -63,20 +63,23 @@ MonoBehaviour:
     <ComboAttackTime>k__BackingField: 0.8
     <ForceTime>k__BackingField: 0.3
     <Force>k__BackingField: 5
+    <Damage>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.6
     <ForceTime>k__BackingField: 0.1
     <Force>k__BackingField: 10
+    <Damage>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0.6
     <ForceTime>k__BackingField: 0.1
     <Force>k__BackingField: 10
+    <Damage>k__BackingField: 0
   <Abilities>k__BackingField:
-  - {fileID: 1523805747257392733}
+  - {fileID: 0}
 --- !u!114 &3714494215694468309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,9 +113,9 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 2.1
   m_Radius: 0.35
-  m_SlopeLimit: 15
+  m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
@@ -153,22 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 9178085192145848638}
   _drag: 0.1
---- !u!114 &1523805747257392733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3236076075919297285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ee8be2a16c6e00469926e39f3d2cc79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <AnimationName>k__BackingField: HurricaneKick
-  <TransitionDuration>k__BackingField: 0.1
-  <AnimationDuration>k__BackingField: 1
-  _force: 10
 --- !u!1001 &6523542870751876491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145710598140382235, guid: da41502e7f63b204495c23a8942dfe3b,
+        type: 3}
+      propertyPath: _myTag
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9183913112805024782, guid: da41502e7f63b204495c23a8942dfe3b,
         type: 3}

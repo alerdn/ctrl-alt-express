@@ -14,6 +14,10 @@ public class CharacterAttackingState : CharacterBaseState
 
     public override void Enter()
     {
+        foreach (AttackDamage weapon in stateMachine.Weapons)
+        {
+            weapon.SetAttack(_attack.Damage);
+        }
         stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
         stateMachine.Character.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
     }

@@ -17,6 +17,7 @@ public class CharacterStateMachine : StateMachine
     [field: SerializeField] public float RotationDamping { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public float InteractionRange { get; private set; } = 2f;
+    [field: SerializeField] public AttackDamage[] Weapons { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public AbilityBase[] Abilities { get; private set; }
 
