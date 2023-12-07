@@ -6,9 +6,11 @@ using UnityEngine;
 public class BondDepleteState : BondBaseState
 {
     private Coroutine _bondDepleteCoroutine;
+    private ComboHandler _comboHandler;
 
-    public BondDepleteState(BondStateMachine stateMachine) : base(stateMachine)
+    public BondDepleteState(BondStateMachine stateMachine, ComboHandler comboHandler) : base(stateMachine)
     {
+        _comboHandler = comboHandler;
     }
 
     public override void Enter()
@@ -20,7 +22,7 @@ public class BondDepleteState : BondBaseState
         float distance = CalculateDistance();
         if (distance <= 8f)
         {
-            stateMachine.SwitchState(new BondChargingState(stateMachine));
+            stateMachine.SwitchState(new BondChargingState(stateMachine, _comboHandler));
             return;
         }
 

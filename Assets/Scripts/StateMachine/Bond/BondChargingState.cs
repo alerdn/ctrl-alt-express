@@ -5,9 +5,11 @@ using UnityEngine;
 public class BondChargingState : BondBaseState
 {
     private Coroutine _bondChargingCoroutine;
+    private ComboHandler _comboHandler;
 
-    public BondChargingState(BondStateMachine stateMachine) : base(stateMachine)
+    public BondChargingState(BondStateMachine stateMachine, ComboHandler comboHandler) : base(stateMachine)
     {
+        _comboHandler = comboHandler;
     }
 
     public override void Enter()
@@ -20,7 +22,7 @@ public class BondChargingState : BondBaseState
         float distance = CalculateDistance();
         if (distance > 8f)
         {
-            stateMachine.SwitchState(new BondDepleteState(stateMachine));
+            stateMachine.SwitchState(new BondDepleteState(stateMachine, _comboHandler));
             return;
         }
 
@@ -40,7 +42,7 @@ public class BondChargingState : BondBaseState
     {
         if (stateMachine.Bond.Value < 100)
         {
-            stateMachine.Bond.Value++;
+            stateMachine.Bond.Value += _comboHandler.ChargeMultiplier;
             yield return new WaitForSeconds(.1f);
         }
         else

@@ -12,6 +12,7 @@ public class CharacterStateMachine : StateMachine
     public CharacterStateMachine OtherCharacter { get; private set; }
     public float ChannelingTime = 5f;
 
+    [field: SerializeField] public ComboHandler ComboHandler { get; private set; }
     [field: SerializeField] public Character Character { get; private set; }
     [field: SerializeField] public float FreeLookMovement { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }

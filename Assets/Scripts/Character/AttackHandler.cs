@@ -4,6 +4,7 @@ using UnityEngine;
 public class AttackHandler : MonoBehaviour
 {
     [SerializeField] private string _myTag;
+    [SerializeField] private StateMachine _stateMachine;
     [SerializeField] private AttackDamage[] _footHitBoxes;
     [SerializeField] private AttackDamage[] _handHitBoxes;
 
@@ -13,12 +14,12 @@ public class AttackHandler : MonoBehaviour
     {
         foreach (AttackDamage hitBox in _footHitBoxes)
         {
-            hitBox.Init(_myTag, _alreadyCollidedWith);
+            hitBox.Init(_myTag, _alreadyCollidedWith, _stateMachine);
         }
 
         foreach (AttackDamage hitBox in _handHitBoxes)
         {
-            hitBox.Init(_myTag, _alreadyCollidedWith);
+            hitBox.Init(_myTag, _alreadyCollidedWith, _stateMachine);
         }
 
         DisableFootHitBoxes();

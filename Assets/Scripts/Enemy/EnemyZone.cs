@@ -9,6 +9,7 @@ public class EnemyZone : MonoBehaviour
 
     [SerializeField] private Transform _spawnParent;
     [SerializeField] private AnimationCurve _spawnCurve;
+    [SerializeField] private AnimationCurve _spawnIntervalCurve;
     [SerializeField] private EnemyStateMachine[] _enemyPrefab;
     [SerializeField] private WhiteFlameInterectable _whiteFlameInterectable;
 
@@ -39,7 +40,7 @@ public class EnemyZone : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            InvokeRepeating(nameof(SpawnWave), 0f, 15f);
+            Invoke(nameof(SpawnWave), _spawnIntervalCurve.Evaluate(_waveIndex));
         }
     }
 
@@ -59,5 +60,6 @@ public class EnemyZone : MonoBehaviour
         }
 
         _waveIndex++;
+        Invoke(nameof(SpawnWave), _spawnIntervalCurve.Evaluate(_waveIndex));
     }
 }

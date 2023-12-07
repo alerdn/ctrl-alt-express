@@ -139,12 +139,12 @@ TextureImporter:
       name: bond_progress
       rect:
         serializedVersion: 2
-        x: 27
-        y: 1019
-        width: 736
+        x: 108
+        y: 218
+        width: 541
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,12 +160,12 @@ TextureImporter:
       name: bond_charge
       rect:
         serializedVersion: 2
-        x: 27
-        y: 965
-        width: 62
-        height: 45
+        x: 101
+        y: 133
+        width: 58
+        height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,6 +173,237 @@ TextureImporter:
       bones: []
       spriteID: 21ecfb8977124cd4cae9e374d2ad544a
       internalID: -1538918020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bond_background
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 33
+        width: 626
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b00bded932541344a50f1487adb6f68
+      internalID: -1863070897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_ss
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 897
+        width: 136
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ba038448b57ba4e84dd83bdb95c6ad
+      internalID: -1905171189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_s
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 897
+        width: 71
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0286d01dc70304489218652ed3a25a7
+      internalID: -90326140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_a
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 898
+        width: 112
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbd15e2ba8098e4498eb02523c72703
+      internalID: 1969363853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_b
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 898
+        width: 79
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee547b5ea9407b4aa015d75a04ec052
+      internalID: 613883762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_c
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 895
+        width: 90
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4221c365b473336469405a9f2d59ec0e
+      internalID: -706919917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_d
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 898
+        width: 82
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79be4796fd0fcb94896a4bbc90fe1a4b
+      internalID: 280294597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rank_e
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 898
+        width: 84
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f093b3dacb7104faafecebf8ce3257
+      internalID: -662074002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kunoichi_icon
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 25
+        width: 175
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c95fc3f7a78e14249b163169cc3e29b9
+      internalID: -1199724361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_icon
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 25
+        width: 175
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6aef29eb5982d746bc0b0a144e7daea
+      internalID: -1853075154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: combo_background
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 422
+        width: 373
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5b44b476d446741af63dbf3d761e2a
+      internalID: -1669879492
       vertices: []
       indices: 
       edges: []
@@ -188,8 +419,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      bond_background: -1863070897
       bond_charge: -1538918020
       bond_progress: -2122421485
+      combo_background: -1669879492
+      kunoichi_icon: -1199724361
+      ninja_icon: -1853075154
+      rank_a: 1969363853
+      rank_b: 613883762
+      rank_c: -706919917
+      rank_d: 280294597
+      rank_e: -662074002
+      rank_s: -90326140
+      rank_ss: -1905171189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

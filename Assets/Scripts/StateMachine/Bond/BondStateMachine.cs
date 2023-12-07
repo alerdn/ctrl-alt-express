@@ -16,6 +16,7 @@ public class BondStateMachine : StateMachine
     [SerializeField] private LineRenderer _bondRenderer;
 
     private Tween _damageTween;
+    private ComboHandler _comboHandler;
 
     private void Start()
     {
@@ -29,10 +30,11 @@ public class BondStateMachine : StateMachine
         DrawBond();
     }
 
-    public void Init(Character[] characters)
+    public void Init(Character[] characters, ComboHandler comboHandler)
     {
         Characters = characters;
-        SwitchState(new BondChargingState(this));
+        _comboHandler = comboHandler;
+        SwitchState(new BondChargingState(this, _comboHandler));
     }
 
     private void DrawBond()

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
             stateMachine.Init(InputReader, BondStateMachine, CharacterStateMachines[(i + 1) % 2]);
         }
 
-        BondStateMachine.Init(new Character[] { CharacterStateMachines[0].Character, CharacterStateMachines[1].Character });
+        BondStateMachine.Init(new Character[] { CharacterStateMachines[0].Character, CharacterStateMachines[1].Character }, CharacterStateMachines[0].ComboHandler);
     }
 
     private void OnDestroy()
