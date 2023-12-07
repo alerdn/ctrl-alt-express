@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public CharacterStateMachine[] CharacterStateMachines { get; private set; }
     [field: SerializeField] public BondStateMachine BondStateMachine { get; private set; }
+    [field: SerializeField] public CharacterHandler CharacterHandler { get; private set; }
 
     [SerializeField] private CinemachineTargetGroup _targetGroup;
 
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
         _targetGroup.m_Targets[_currentCharacterIndex].weight = 2f;
         _targetGroup.m_Targets[otherCharacterIndex].weight = 1f;
+
+        CharacterHandler.SetCharacter(_currentCharacterIndex);
     }
 
     private void SwitchCharacter()
@@ -75,5 +78,7 @@ public class PlayerController : MonoBehaviour
         _targetGroup.m_Targets[otherCharacterIndex].weight = 1f;
 
         _switchCharacterCooldown = .5f;
+
+        CharacterHandler.SetCharacter(_currentCharacterIndex);
     }
 }

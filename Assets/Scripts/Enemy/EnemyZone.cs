@@ -37,11 +37,11 @@ public class EnemyZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_alreadySpawned) return;
-        _alreadySpawned = true;
-
         if (other.CompareTag("Player"))
         {
+            if (_alreadySpawned) return;
+            _alreadySpawned = true;
+            
             Invoke(nameof(SpawnWave), _spawnIntervalCurve.Evaluate(_waveIndex));
         }
     }
