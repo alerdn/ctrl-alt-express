@@ -33,8 +33,8 @@ public class CharacterChannelingState : CharacterBaseState
 
     private IEnumerator ChannelingRoutine()
     {
-        Vector3 lookAtPosition = _lookAt.position;
-        stateMachine.transform.LookAt(new Vector3(lookAtPosition.x, 0f, lookAtPosition.z));
+        Vector3 lookAtPosition = _lookAt.position - stateMachine.transform.position;
+        stateMachine.transform.rotation = Quaternion.LookRotation(new Vector3(lookAtPosition.x, 0f, lookAtPosition.z));
 
         stateMachine.Character.Animator.CrossFadeInFixedTime(StartChannelingHash, 0.1f);
         yield return new WaitForSeconds(stateMachine.ChannelingTime);

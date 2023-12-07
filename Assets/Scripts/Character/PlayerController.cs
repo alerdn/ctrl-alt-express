@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineTargetGroup _targetGroup;
 
     private int _currentCharacterIndex;
+    private float _switchCharacterCooldown;
 
     private void Start()
     {
@@ -37,6 +38,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (_switchCharacterCooldown > 0)
+        {
+            _switchCharacterCooldown -= Time.deltaTime;
+        }
+    }
+
     private void SetCharacter(int characterIndex)
     {
         _currentCharacterIndex = characterIndex;
@@ -51,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchCharacter()
     {
+        if (_switchCharacterCooldown > 0) return;
+
         int otherCharacterIndex = _currentCharacterIndex;
         _currentCharacterIndex = (_currentCharacterIndex + 1) % 2;
 
@@ -59,5 +70,7 @@ public class PlayerController : MonoBehaviour
 
         _targetGroup.m_Targets[_currentCharacterIndex].weight = 2f;
         _targetGroup.m_Targets[otherCharacterIndex].weight = 1f;
+
+        _switchCharacterCooldown = .5f;
     }
 }

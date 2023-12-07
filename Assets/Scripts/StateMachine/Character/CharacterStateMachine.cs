@@ -61,4 +61,19 @@ public class CharacterStateMachine : StateMachine
             return 0f;
         }
     }
+
+    public Vector3 CalculeMovement()
+    {
+        Vector3 forward = MainCamera.transform.forward;
+        Vector3 right = MainCamera.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        return forward * InputReader.MovementValue.y
+            + right * InputReader.MovementValue.x;
+    }
 }

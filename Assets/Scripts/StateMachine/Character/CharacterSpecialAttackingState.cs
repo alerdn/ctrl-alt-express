@@ -19,6 +19,7 @@ public class CharacterSpecialAttackingState : CharacterBaseState
 
     public override void Exit()
     {
+        _ability.OnAbilityFinish -= OnFinishAbility;
     }
 
     private void OnFinishAbility()

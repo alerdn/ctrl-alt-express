@@ -632,7 +632,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -648,7 +648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bdceecd920b444aa2f155709988d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myCollider: {fileID: 0}
 --- !u!1 &2906086074360532001
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +828,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Height: 0.47
   m_Direction: 1
   m_Center: {x: 0, y: 0.11, z: 0}
@@ -845,7 +844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bdceecd920b444aa2f155709988d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myCollider: {fileID: 0}
 --- !u!1 &3463869296823498326
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +896,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Height: 0.47
   m_Direction: 1
   m_Center: {x: 0, y: 0.11, z: 0}
@@ -914,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bdceecd920b444aa2f155709988d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myCollider: {fileID: 0}
 --- !u!1 &3756797106083084716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,7 +2259,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2278,7 +2275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bdceecd920b444aa2f155709988d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myCollider: {fileID: 0}
 --- !u!1 &7405286241243459828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,6 +2926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06daec73e9c668e48bec904ffe922cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myTag: 
   _footHitBoxes:
   - {fileID: 4067354067173418529}
   - {fileID: 1257416677696709547}

@@ -32,21 +32,6 @@ public abstract class CharacterBaseState : State
         stateMachine.Character.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
 
-    protected Vector3 CalculeMovement()
-    {
-        Vector3 forward = stateMachine.MainCamera.transform.forward;
-        Vector3 right = stateMachine.MainCamera.transform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * stateMachine.InputReader.MovementValue.y
-            + right * stateMachine.InputReader.MovementValue.x;
-    }
-
     protected void UseAbility()
     {
         if (stateMachine.BondStateMachine.BondCharge.Value <= 0)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class BondChargingState : BondBaseState
 
     public override void Enter()
     {
+        stateMachine.OnBondDamaged += OnBondDamaged;
     }
 
     public override void Tick(float deltaTime)
@@ -51,5 +53,19 @@ public class BondChargingState : BondBaseState
         }
 
         _bondChargingCoroutine = null;
+    }
+
+    private void OnBondDamaged()
+    {
+        if (_bondChargingCoroutine != null)
+            stateMachine.StopCoroutine(_bondChargingCoroutine);
+
+        _bondChargingCoroutine = stateMachine.StartCoroutine(PauseBondRoutine());
+    }
+
+    private IEnumerator PauseBondRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        _bondChargingCoroutine = stateMachine.StartCoroutine(ChargeBond());
     }
 }

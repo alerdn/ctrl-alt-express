@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public event Action OnDamage;
+
     [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private ParticleSystem _onKillParticlesPrefab;
 
     private int _currentHealth;
 
@@ -18,5 +20,17 @@ public class Health : MonoBehaviour
         if (_currentHealth <= 0) return;
 
         _currentHealth = Mathf.Max(_currentHealth - damage, 0);
+        OnDamage?.Invoke();
+
+        if (_currentHealth == 0)
+        {
+            Kill();
+        }
+    }
+
+    private void Kill()
+    {
+        Instantiate(_onKillParticlesPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

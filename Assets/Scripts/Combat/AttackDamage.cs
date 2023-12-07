@@ -21,6 +21,8 @@ public class AttackDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_myTag == null) return;
+
         if (other.CompareTag(_myTag)) return;
 
         if (_alreadyCollidedWith.Contains(other)) return;
@@ -28,13 +30,15 @@ public class AttackDamage : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player tomou dano");
+            if (other.TryGetComponent<CharacterStateMachine>(out CharacterStateMachine characterStateMachine))
+            {
+                characterStateMachine.BondStateMachine.DamageBond(_damage);
+            }
         }
         else if (other.CompareTag("Enemy"))
         {
             if (other.TryGetComponent<Health>(out Health health))
             {
-                Debug.Log($"Inimigo tomou {_damage} dano");
                 health.DealDamage(_damage);
             }
         }
