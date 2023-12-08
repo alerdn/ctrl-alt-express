@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,7 +10,7 @@ public class Character : MonoBehaviour
     [field: SerializeField] public Animator Animator { get; private set; }
     [SerializeField] private string _freeLookBlendTreeName = "FreeLookBlendTreeKunoichi";
 
-    private void Start()
+    private void Awake()
     {
         Controller = GetComponent<CharacterController>();
         NavMeshAgent = GetComponent<NavMeshAgent>();

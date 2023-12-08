@@ -16,7 +16,7 @@ public class WhiteFlameInterectable : MonoBehaviour, IInteractable
         stateMachine.SwitchState(state);
     }
 
-    private void LightWhiteFlame()
+    public void LightWhiteFlame()
     {
         foreach (MeshRenderer renderer in _renderers)
         {
