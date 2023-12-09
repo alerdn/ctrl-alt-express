@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStateMachine : StateMachine
@@ -21,6 +19,8 @@ public class CharacterStateMachine : StateMachine
     [field: SerializeField] public AttackDamage[] Weapons { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public AbilityBase[] Abilities { get; private set; }
+    [field: SerializeField] public AudioSource AttackAudioSource { get; private set; }
+    [field: SerializeField] public AudioClip[] AttackAudios { get; private set; }
 
     public bool IsCurrent { get; set; }
     public Camera MainCamera { get; private set; }
@@ -76,5 +76,23 @@ public class CharacterStateMachine : StateMachine
 
         return forward * InputReader.MovementValue.y
             + right * InputReader.MovementValue.x;
+    }
+
+    public void PlayAudio(AudioClip clip)
+    {
+        if (AttackAudioSource.isPlaying) return;
+
+        AttackAudioSource.clip = clip;
+        AttackAudioSource.Play();
+    }
+
+    public void Move(float deltaTime)
+    {
+        Move(Vector3.zero, deltaTime);
+    }
+
+    public void Move(Vector3 motion, float deltaTime)
+    {
+        Character.Controller.Move((motion + ForceReceiver.Movement) * deltaTime);
     }
 }

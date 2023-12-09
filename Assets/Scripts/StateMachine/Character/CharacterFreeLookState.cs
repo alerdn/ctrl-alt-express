@@ -30,7 +30,7 @@ public class CharacterFreeLookState : CharacterBaseState
         }
 
         Vector3 movement = stateMachine.CalculeMovement();
-        Move(stateMachine.FreeLookMovement * movement, deltaTime);
+        stateMachine.Move(stateMachine.FreeLookMovement * movement, deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {

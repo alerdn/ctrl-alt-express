@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyZone : MonoBehaviour
 {
+    public event Action OnZoneCompleted;
+
     public CharacterStateMachine[] CharacterStateMachines { get; private set; }
 
     [SerializeField] private Transform _spawnParent;
@@ -41,7 +43,7 @@ public class EnemyZone : MonoBehaviour
         {
             if (_alreadySpawned) return;
             _alreadySpawned = true;
-            
+
             Invoke(nameof(SpawnWave), _spawnIntervalCurve.Evaluate(_waveIndex));
         }
     }
@@ -49,6 +51,7 @@ public class EnemyZone : MonoBehaviour
     private void OnFlamedLited()
     {
         CancelInvoke(nameof(SpawnWave));
+        OnZoneCompleted?.Invoke();
     }
 
     private void SpawnWave()

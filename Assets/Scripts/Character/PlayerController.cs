@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterHandler CharacterHandler { get; private set; }
 
     [SerializeField] private CinemachineTargetGroup _targetGroup;
+    [SerializeField] private DeathUI _deathUI;
 
     private int _currentCharacterIndex;
     private float _switchCharacterCooldown;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         }
 
         BondStateMachine.Init(new Character[] { CharacterStateMachines[0].Character, CharacterStateMachines[1].Character }, CharacterStateMachines[0].ComboHandler);
+        BondStateMachine.OnPlayerDeath += OnplayerDeath;
     }
 
     private void OnDestroy()
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
             CharacterStateMachine stateMachine = CharacterStateMachines[i];
             stateMachine.OnSwitchCharecter -= SwitchCharacter;
         }
+        BondStateMachine.OnPlayerDeath -= OnplayerDeath;
     }
 
     private void Update()
@@ -80,5 +84,13 @@ public class PlayerController : MonoBehaviour
         _switchCharacterCooldown = .5f;
 
         CharacterHandler.SetCharacter(_currentCharacterIndex);
+    }
+
+    private void OnplayerDeath()
+    {
+        CharacterStateMachines[0].SwitchState(new CharacterDeathState(CharacterStateMachines[0]));
+        CharacterStateMachines[1].SwitchState(new CharacterDeathState(CharacterStateMachines[1]));
+
+        _deathUI.ShowDeathUI();
     }
 }

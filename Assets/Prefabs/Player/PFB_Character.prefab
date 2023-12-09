@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChannelingTime: 5
+  <ComboHandler>k__BackingField: {fileID: 0}
   <Character>k__BackingField: {fileID: 3714494215694468309}
   <FreeLookMovement>k__BackingField: 8
   <RotationDamping>k__BackingField: 10
@@ -80,6 +81,8 @@ MonoBehaviour:
     <Damage>k__BackingField: 0
   <Abilities>k__BackingField:
   - {fileID: 0}
+  <AttackAudioSource>k__BackingField: {fileID: 0}
+  <AttackAudios>k__BackingField: []
 --- !u!114 &3714494215694468309
 MonoBehaviour:
   m_ObjectHideFlags: 0

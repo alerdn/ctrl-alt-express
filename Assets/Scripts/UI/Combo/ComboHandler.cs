@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class ComboHandler : MonoBehaviour
 {
-    public int ChargeMultiplier => _rankIndex + 1;
+    public int ChargeMultiplier => (_rankIndex + 1) * 2;
     [SerializeField] private Sprite[] _ranks;
     [SerializeField] private Image _rankImage;
     [SerializeField] private TMP_Text _comboText;

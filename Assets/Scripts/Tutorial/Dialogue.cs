@@ -1,8 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+[Serializable]
+public struct DialogueData
+{
+    public string Name;
+    public string Text;
+}
 
 public class Dialogue : MonoBehaviour
 {
@@ -10,15 +18,17 @@ public class Dialogue : MonoBehaviour
 
     [SerializeField] private GameObject _dialogueMenu;
     [SerializeField] private TMP_Text _textBox;
-    [SerializeField] private string[] _texts;
+    [SerializeField] private TMP_Text _speaker;
+    [SerializeField] private DialogueData[] _texts;
 
     private int _textIndex;
 
-    public void ShowDialogue()
+    public void ShowDialogue(DialogueData[] data = null)
     {
+        if (data != null)
+            _texts = data;
         _dialogueMenu.SetActive(true);
         StartCoroutine(TypeText());
-
     }
 
     public void CloseDialogue()
@@ -28,20 +38,22 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator TypeText()
     {
-
-        foreach (string text in _texts)
+        foreach (DialogueData dialoge in _texts)
         {
+            _speaker.text = dialoge.Name;
+            string text = dialoge.Text;
+
             _textBox.text = "";
             foreach (char letter in text.ToCharArray())
             {
-                if (Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame)
+                if (Keyboard.current.anyKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame))
                 {
                     _textBox.text = text;
                     break;
                 }
 
                 _textBox.text += letter;
-                yield return new WaitForSeconds(.05f);
+                yield return new WaitForSeconds(.025f);
             }
 
             yield return new WaitForSeconds(1f);

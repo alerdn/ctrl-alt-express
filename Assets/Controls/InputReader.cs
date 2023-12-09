@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action OnSwitchCharacterEvent;
     public event Action OnActionEvent;
     public event Action OnSpecialAttackEvent;
+    public event Action OnPauseEvent;
 
     public Vector2 MovementValue { get; private set; }
     public Vector2 AimValue { get; private set; }
@@ -27,6 +28,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     private void OnDisable()
     {
+        _controls.Player.SetCallbacks(null);
         _controls.Player.Disable();
     }
 
@@ -66,5 +68,12 @@ public class InputReader : ScriptableObject, IPlayerActions
         if (!context.performed) return;
 
         OnSpecialAttackEvent?.Invoke();
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        OnPauseEvent?.Invoke();
     }
 }

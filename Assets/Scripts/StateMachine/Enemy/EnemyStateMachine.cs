@@ -9,6 +9,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public int StunChance { get; private set; } = 70;
+    [field: SerializeField] public string FreeLookBlendTreeString = "FreeLookBlendTree";
 
     public CharacterStateMachine[] CharacterStateMachines { get; private set; }
     public NavMeshAgent NavMeshAgent { get; private set; }

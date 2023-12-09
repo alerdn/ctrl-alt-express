@@ -22,16 +22,6 @@ public abstract class CharacterBaseState : State
         );
     }
 
-    protected void Move(float deltaTime)
-    {
-        Move(Vector3.zero, deltaTime);
-    }
-
-    protected void Move(Vector3 motion, float deltaTime)
-    {
-        stateMachine.Character.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
-    }
-
     protected void UseAbility()
     {
         if (stateMachine.BondStateMachine.BondCharge.Value <= 0)

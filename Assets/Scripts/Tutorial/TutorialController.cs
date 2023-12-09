@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class TutorialController : MonoBehaviour
 {
     protected readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
+    [SerializeField] private BondStateMachine BondStateMachine;
     [SerializeField] private Transform[] _transforms;
     [SerializeField] private Character[] _characters;
     [SerializeField] private Dialogue _dialogue;
     [SerializeField] private WhiteFlameInterectable _whiteFlame;
     [SerializeField] private TutorialGate _tutorialGate;
     [SerializeField] private CinemachineVirtualCamera _vcam;
+    [SerializeField] private Image _fade;
 
     private bool _moveCharacters;
     private bool _canChannel;
@@ -30,11 +35,17 @@ public class TutorialController : MonoBehaviour
             character.Animator.CrossFadeInFixedTime(character.FreeLookBlendTreeHash, .1f);
         }
 
+        BondStateMachine.Init(new Character[] { _characters[0], _characters[1] }, null);
         StartCoroutine(TutorialRoutine());
     }
 
     private void Update()
     {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
+        {
+            EndTutorial();
+        }
+
         if (_moveCharacters)
         {
             for (int i = 0; i < _characters.Length; i++)
@@ -95,9 +106,8 @@ public class TutorialController : MonoBehaviour
     private void EndTutorial()
     {
         _vcam.m_Follow = null;
-        Debug.Log("Tutorial ended");
-
-        Invoke(nameof(EndTutorialRoutine), 1f);
+        _fade.DOFade(1f, 1f);
+        Invoke(nameof(EndTutorialRoutine), 2f);
     }
 
     private void EndTutorialRoutine()

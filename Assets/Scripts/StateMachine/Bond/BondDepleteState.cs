@@ -20,7 +20,7 @@ public class BondDepleteState : BondBaseState
     public override void Tick(float deltaTime)
     {
         float distance = CalculateDistance();
-        if (distance <= 8f)
+        if (distance <= 5f)
         {
             stateMachine.SwitchState(new BondChargingState(stateMachine, _comboHandler));
             return;
@@ -40,11 +40,14 @@ public class BondDepleteState : BondBaseState
 
     private IEnumerator DepleteBond()
     {
+        float distance = CalculateDistance();
+        int depleteAmount = (int)Mathf.Ceil(distance / 5f);
+
         if (stateMachine.BondCharge.Value >= 0)
         {
             if (stateMachine.Bond.Value > 0)
             {
-                stateMachine.Bond.Value--;
+                stateMachine.Bond.Value -= depleteAmount;
                 yield return new WaitForSeconds(.1f);
             }
             else if (stateMachine.BondCharge.Value > 0)

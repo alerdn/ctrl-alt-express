@@ -5,8 +5,11 @@ public class WhiteFlameInterectable : MonoBehaviour, IInteractable
 {
     public event Action OnFlamedLited;
 
+    [SerializeField] private bool _showTutorial;
+    [SerializeField] private DialogueData[] _dialogue;
     [SerializeField] private Transform _lookAt;
     [SerializeField] private MeshRenderer[] _renderers;
+
 
     public void Interact(CharacterStateMachine stateMachine)
     {
@@ -23,6 +26,10 @@ public class WhiteFlameInterectable : MonoBehaviour, IInteractable
             renderer.material.SetInt("_DECALEMISSIONONOFF", 1);
         }
 
+        if (_showTutorial)
+        {
+            DialogueManager.Instance.StartDialogue(_dialogue);
+        }
         OnFlamedLited?.Invoke();
     }
 }

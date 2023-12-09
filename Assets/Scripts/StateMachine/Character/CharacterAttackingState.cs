@@ -27,7 +27,7 @@ public class CharacterAttackingState : CharacterBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (!_autoAttack) Move(deltaTime);
+        if (!_autoAttack) stateMachine.Move(deltaTime);
 
         float normalizedTime = stateMachine.GetNormalizedTime("Attack");
 

@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public event Action OnDamage;
+    public event Action<int> OnDamage;
+    public event Action OnDeath;
+    public int MaxHealth => _maxHealth;
 
     [SerializeField] private int _maxHealth = 100;
     [SerializeField] private ParticleSystem _onKillParticlesPrefab;
@@ -20,10 +22,11 @@ public class Health : MonoBehaviour
         if (_currentHealth <= 0) return;
 
         _currentHealth = Mathf.Max(_currentHealth - damage, 0);
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(_currentHealth);
 
         if (_currentHealth == 0)
         {
+            OnDeath?.Invoke();
             Kill();
         }
     }

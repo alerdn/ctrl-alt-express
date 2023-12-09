@@ -42,7 +42,9 @@ public class AttackDamage : MonoBehaviour
         {
             if (other.TryGetComponent<Health>(out Health health))
             {
-                ((CharacterStateMachine)_stateMachine).ComboHandler.AddCombo(_damage);
+                CharacterStateMachine characterStateMachine = ((CharacterStateMachine)_stateMachine);
+                characterStateMachine.ComboHandler.AddCombo(_damage);
+                characterStateMachine.PlayAudio(characterStateMachine.AttackAudios.GetRandom());
                 health.DealDamage(_damage);
             }
         }
