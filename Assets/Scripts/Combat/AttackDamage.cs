@@ -9,7 +9,6 @@ public class AttackDamage : MonoBehaviour
     private StateMachine _stateMachine;
     private int _damage;
 
-
     public void Init(string myTag, List<Collider> alreadyCollidedWith, StateMachine stateMachine)
     {
         _myTag = myTag;

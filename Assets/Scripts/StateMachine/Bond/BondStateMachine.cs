@@ -13,6 +13,7 @@ public class BondStateMachine : StateMachine
     [field: SerializeField] public SOInt BondCharge { get; private set; }
     [field: SerializeField] public int MaxBondCharge { get; private set; }
     public bool Intangible;
+    public bool IsDodging;
 
     [SerializeField] private LineRenderer _bondRenderer;
     [SerializeField] private Volume _damageVolume;
@@ -50,6 +51,7 @@ public class BondStateMachine : StateMachine
     {
         if (_gameOver) return;
         if (Intangible) return;
+        if (IsDodging) return;
 
         OnBondDamaged?.Invoke();
         int remainingDamage = 0;

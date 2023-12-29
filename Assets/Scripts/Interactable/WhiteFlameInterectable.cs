@@ -15,6 +15,7 @@ public class WhiteFlameInterectable : MonoBehaviour, IInteractable
     public bool Interact(CharacterStateMachine stateMachine)
     {
         if (_isFlameAlreadyLited) return false;
+        _isFlameAlreadyLited = true;
 
         CharacterChannelingState state = new CharacterChannelingState(stateMachine, transform);
         state.OnChannelingCompleted += LightWhiteFlame;

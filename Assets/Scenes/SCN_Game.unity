@@ -6580,7 +6580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 244.685, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739590206
@@ -9196,6 +9196,7 @@ MonoBehaviour:
     type: 2}
   <MaxBondCharge>k__BackingField: 3
   Intangible: 0
+  IsDodging: 0
   _bondRenderer: {fileID: 1074076231}
   _damageVolume: {fileID: 1759693881}
 --- !u!1 &1093894408

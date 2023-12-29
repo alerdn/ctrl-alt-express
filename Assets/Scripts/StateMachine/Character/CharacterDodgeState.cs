@@ -13,7 +13,7 @@ public class CharacterDodgeState : CharacterBaseState
     public override void Enter()
     {
         stateMachine.Character.Animator.CrossFadeInFixedTime("Roll", .1f);
-        stateMachine.BondStateMachine.Intangible = true;
+        stateMachine.BondStateMachine.IsDodging = true;
         stateMachine.StartCoroutine(FinishDodge());
         _movementDirection = stateMachine.CalculeMovement();
     }
@@ -32,7 +32,7 @@ public class CharacterDodgeState : CharacterBaseState
     private IEnumerator FinishDodge()
     {
         yield return new WaitForSeconds(.5f);
-        stateMachine.BondStateMachine.Intangible = false;
+        stateMachine.BondStateMachine.IsDodging = false;
         stateMachine.SwitchState(new CharacterFreeLookState(stateMachine));
     }
 }

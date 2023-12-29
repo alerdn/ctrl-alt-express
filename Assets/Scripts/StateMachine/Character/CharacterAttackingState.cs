@@ -7,6 +7,7 @@ public class CharacterAttackingState : CharacterBaseState
     private bool _alreadyAppliedForce;
     private bool _autoAttack;
     private Transform _enemy;
+    private bool _isDodging;
 
     public CharacterAttackingState(CharacterStateMachine stateMachine, int attackIndex, bool autoAttack = false, Transform enemy = null) : base(stateMachine)
     {
@@ -21,12 +22,22 @@ public class CharacterAttackingState : CharacterBaseState
         {
             weapon.SetAttack(_attack.Damage);
         }
-        if (!_autoAttack) stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
+        if (!_autoAttack)
+        {
+            stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
+            stateMachine.InputReader.OnDodgeEvent += Dodge;
+        }
         stateMachine.Character.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
     }
 
     public override void Tick(float deltaTime)
     {
+        if (_isDodging)
+        {
+            stateMachine.SwitchState(new CharacterDodgeState(stateMachine));
+            return;
+        }
+
         if (!_autoAttack) stateMachine.Move(deltaTime);
 
         float normalizedTime = stateMachine.GetNormalizedTime("Attack");
@@ -59,7 +70,11 @@ public class CharacterAttackingState : CharacterBaseState
 
     public override void Exit()
     {
-        if (!_autoAttack) stateMachine.InputReader.OnSpecialAttackEvent -= UseAbility;
+        if (!_autoAttack)
+        {
+            stateMachine.InputReader.OnSpecialAttackEvent -= UseAbility;
+            stateMachine.InputReader.OnDodgeEvent -= Dodge;
+        }
     }
 
     private void TryComboAttack(float normalizedTime)
@@ -82,5 +97,10 @@ public class CharacterAttackingState : CharacterBaseState
             stateMachine.ForceReceiver.AddForce((stateMachine.transform.forward + movement) * _attack.Force);
         }
         _alreadyAppliedForce = true;
+    }
+
+    private void Dodge()
+    {
+        _isDodging = true;
     }
 }
