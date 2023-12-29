@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterFreeLookState : CharacterBaseState
 {
+    private bool _isDodging;
+
     public CharacterFreeLookState(CharacterStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -13,6 +15,8 @@ public class CharacterFreeLookState : CharacterBaseState
     {
         stateMachine.InputReader.OnActionEvent += UseBondCharge;
         stateMachine.InputReader.OnSpecialAttackEvent += UseAbility;
+        stateMachine.InputReader.OnDodgeEvent += Dodge;
+
         stateMachine.Character.Animator.CrossFadeInFixedTime(stateMachine.Character.FreeLookBlendTreeHash, 0.1f);
     }
 
@@ -21,6 +25,11 @@ public class CharacterFreeLookState : CharacterBaseState
         if (!stateMachine.IsCurrent)
         {
             stateMachine.SwitchState(new CharacterFollowState(stateMachine));
+            return;
+        }
+        if (_isDodging)
+        {
+            stateMachine.SwitchState(new CharacterDodgeState(stateMachine));
             return;
         }
         if (stateMachine.InputReader.IsAttacking)
@@ -46,6 +55,7 @@ public class CharacterFreeLookState : CharacterBaseState
     {
         stateMachine.InputReader.OnActionEvent -= UseBondCharge;
         stateMachine.InputReader.OnSpecialAttackEvent -= UseAbility;
+        stateMachine.InputReader.OnDodgeEvent -= Dodge;
     }
 
     private void UseBondCharge()
@@ -60,10 +70,15 @@ public class CharacterFreeLookState : CharacterBaseState
         {
             if (collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                interactable.Interact(stateMachine);
-                stateMachine.BondStateMachine.BondCharge.Value--;
+                if (interactable.Interact(stateMachine))
+                    stateMachine.BondStateMachine.BondCharge.Value--;
                 break;
             }
         }
+    }
+
+    private void Dodge()
+    {
+        _isDodging = true;
     }
 }

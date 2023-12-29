@@ -12,6 +12,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action OnActionEvent;
     public event Action OnSpecialAttackEvent;
     public event Action OnPauseEvent;
+    public event Action OnDodgeEvent;
 
     public Vector2 MovementValue { get; private set; }
     public Vector2 AimValue { get; private set; }
@@ -75,5 +76,12 @@ public class InputReader : ScriptableObject, IPlayerActions
         if (!context.performed) return;
 
         OnPauseEvent?.Invoke();
+    }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        OnDodgeEvent?.Invoke();
     }
 }

@@ -6,7 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
 
-    [SerializeField] private Dialogue _dialogue;
+    [SerializeField] private DialogueUI _dialogue;
 
     private void Awake()
     {

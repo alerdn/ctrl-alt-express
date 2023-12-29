@@ -10,13 +10,17 @@ public class WhiteFlameInterectable : MonoBehaviour, IInteractable
     [SerializeField] private Transform _lookAt;
     [SerializeField] private MeshRenderer[] _renderers;
 
+    private bool _isFlameAlreadyLited;
 
-    public void Interact(CharacterStateMachine stateMachine)
+    public bool Interact(CharacterStateMachine stateMachine)
     {
+        if (_isFlameAlreadyLited) return false;
+
         CharacterChannelingState state = new CharacterChannelingState(stateMachine, transform);
         state.OnChannelingCompleted += LightWhiteFlame;
 
         stateMachine.SwitchState(state);
+        return true;
     }
 
     public void LightWhiteFlame()

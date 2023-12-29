@@ -14,7 +14,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private BondStateMachine BondStateMachine;
     [SerializeField] private Transform[] _transforms;
     [SerializeField] private Character[] _characters;
-    [SerializeField] private Dialogue _dialogue;
+    [SerializeField] private DialogueUI _dialogue;
     [SerializeField] private WhiteFlameInterectable _whiteFlame;
     [SerializeField] private TutorialGate _tutorialGate;
     [SerializeField] private CinemachineVirtualCamera _vcam;

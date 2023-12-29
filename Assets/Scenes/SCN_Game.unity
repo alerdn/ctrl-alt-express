@@ -3492,7 +3492,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 5.0341706, y: 0.5444517, z: -4.1598873}
+  m_LocalPosition: {x: 5.0341735, y: 0.5444536, z: -4.1598873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5178,7 +5178,7 @@ Transform:
   m_GameObject: {fileID: 567484449}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 5.0341706, y: 0.5444517, z: -4.1598873}
+  m_LocalPosition: {x: 5.0341735, y: 0.5444536, z: -4.1598873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5856,7 +5856,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 812922570}
+      objectReference: {fileID: 2092907309}
     - target: {fileID: 3209859162021402273, guid: ffc6e83ab2fdc9f49b6bdf5ee226ec88,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
@@ -7604,7 +7604,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 2092907309}
+      objectReference: {fileID: 1660810432}
     - target: {fileID: 3209859162021402273, guid: ffc6e83ab2fdc9f49b6bdf5ee226ec88,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
@@ -14812,6 +14812,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1660810432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3209859162021402273, guid: ffc6e83ab2fdc9f49b6bdf5ee226ec88,
+    type: 3}
+  m_PrefabInstance: {fileID: 660801637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1665481860
 GameObject:
   m_ObjectHideFlags: 0
@@ -17030,7 +17042,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 812922570}
+      objectReference: {fileID: 1660810432}
     - target: {fileID: 3209859162021402273, guid: ffc6e83ab2fdc9f49b6bdf5ee226ec88,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17155,6 +17167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1b7e9da81ba0f4bb781cca7f7a00f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TriggerDialogue>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   _dialogueMenu: {fileID: 546135002}
   _textBox: {fileID: 38231531}
   _speaker: {fileID: 502818343}

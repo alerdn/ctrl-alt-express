@@ -1,5 +1,5 @@
 
 public interface IInteractable
 {
-    void Interact(CharacterStateMachine stateMachine);
+    bool Interact(CharacterStateMachine stateMachine);
 }

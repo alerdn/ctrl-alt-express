@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [Serializable]
@@ -12,9 +13,10 @@ public struct DialogueData
     public string Text;
 }
 
-public class Dialogue : MonoBehaviour
+public class DialogueUI : MonoBehaviour
 {
     public bool DialogueFinished { get; private set; }
+    [field: SerializeField] public UnityEvent TriggerDialogue { get; private set; }
 
     [SerializeField] private GameObject _dialogueMenu;
     [SerializeField] private TMP_Text _textBox;
